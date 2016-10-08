@@ -1,0 +1,75 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich" template="layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:messages globalOnly="true" styleClass="message" />
+
+		<rich:panel>
+			<f:facet name="header">centroComercialList</f:facet>
+
+			<div class="results">
+
+				<h:outputText value="No centroComercial exists"
+					rendered="#{empty centroComercialList.resultList}" />
+
+				<rich:dataGrid value="#{centroComercialList.resultList}" var="cc"
+					columns="3" elements="9" width="600px"
+					rendered="#{not empty centroComercialList.resultList}">
+					<rich:panel bodyClass="pbody">
+						<f:facet name="header">
+							<h:outputText value="Centro Comercial #{cc.nombre}"></h:outputText>
+						</f:facet>
+						<div align="center">
+						<h:graphicImage value="/img/#{cc.foto}" width="200" height="200"/>
+						<h:panelGrid columns="2">
+							<h:outputText value="Direccion:" styleClass="label" style="font-weight:bold"></h:outputText>
+							<h:outputText value="#{cc.direccion}" />
+							<h:outputText value="Horario:" styleClass="label" style="font-weight:bold"></h:outputText>
+							<h:outputText value="#{cc.horario}" />
+							<h:outputText value="Telefono:" styleClass="label" style="font-weight:bold"></h:outputText>
+							<h:outputText value="#{cc.telefono}" />
+							<h:outputText value="Web:" styleClass="label" style="font-weight:bold"></h:outputText>
+							<a href="#{cc.web}">#{cc.web}</a>.
+							
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+						<s:link action="#{principal.showUser}" rendered="true">
+								<h:graphicImage value="/img/facebook.png" />
+							</s:link>
+							 
+							<s:link action="#{principal.showUser}" rendered="true">
+								<h:graphicImage value="/img/twitter.png" />
+							</s:link>
+							 
+							<s:link action="#{principal.showUser}" rendered="true">
+								<h:graphicImage value="/img/instagram.png" />
+							</s:link>
+						</h:panelGrid>
+						</div>
+					</rich:panel>
+					<f:facet name="footer">
+						 
+					</f:facet>
+				</rich:dataGrid>
+
+
+			</div>
+
+		</rich:panel>
+
+		<div class="actionButtons">
+			<s:button id="done" value="Create centroComercial"
+				view="/centroComercial.xhtml" />
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+

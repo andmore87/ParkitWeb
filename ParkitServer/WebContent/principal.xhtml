@@ -1,0 +1,61 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich" template="layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:messages globalOnly="true" styleClass="message" />
+
+		<rich:panel>
+			<f:facet name="header">Opciones</f:facet>
+			<div class="actionButtons">
+				<h:panelGrid columns="4" rowClasses="prop" border="0"
+					cellpadding="35" cellspacing="2">
+					<rich:column>
+						<s:link action="#{principal.showUser}" rendered="true">
+							<h:graphicImage value="/img/nova144123.png" />
+						</s:link>
+						<div align="center">
+							<h:outputText value="Parqueaderos" style="font-weight:bold" />
+						</div>
+					</rich:column>
+
+					<rich:column>
+						<s:link action="#{principal.showUser}" rendered="true">
+							<h:graphicImage value="/img/nova144123.png" />
+						</s:link>
+						<div align="center">
+							<h:outputText value="Usuarios" style="font-weight:bold"/>
+						</div>
+					</rich:column>
+
+					<rich:column>
+						<s:link action="#{principal.showUser}" rendered="true">
+							<h:graphicImage value="/img/nova144123.png" />
+						</s:link>
+						<div align="center">
+							<h:outputText value="Dispositivos" style="font-weight:bold" />
+						</div>
+					</rich:column>
+
+					<rich:column>
+						<s:link action="#{principal.showCC}" rendered="true">
+							<h:graphicImage value="/img/nova144123.png" />
+						</s:link>
+						<div align="center">
+							<h:outputText value="Centros Comerciales" style="font-weight:bold" />
+						</div>
+					</rich:column>
+
+
+				</h:panelGrid>
+			</div>
+		</rich:panel>
+
+	</ui:define>
+</ui:composition>

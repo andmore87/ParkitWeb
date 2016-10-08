@@ -1,0 +1,77 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich" template="layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:messages globalOnly="true" styleClass="message" />
+
+		<h:form id="userForm">
+
+			<rich:panel>
+				<f:facet name="header">Usuario</f:facet>
+
+				<s:decorate id="nameDecoration" template="layout/edit.xhtml">
+					<ui:define name="label">Nombre</ui:define>
+					<h:inputText id="name" required="true"
+						value="#{userHome.instance.nombre}" />
+				</s:decorate>
+				
+				<s:decorate id="lastNameDecoration" template="layout/edit.xhtml">
+					<ui:define name="label">Apellido</ui:define>
+					<h:inputText id="lastname" required="true"
+						value="#{userHome.instance.apellido}" />
+				</s:decorate>
+				
+				<s:decorate id="emailDecoration" template="layout/edit.xhtml">
+					<ui:define name="label">Email</ui:define>
+					<h:inputText id="lastname" required="true"
+						value="#{userHome.instance.correo}" />
+				</s:decorate>
+				
+				<s:decorate id="placaDecoration" template="layout/edit.xhtml">
+					<ui:define name="label">Placa</ui:define>
+					<h:inputText id="lastname" required="true"
+						value="#{userHome.instance.placa}" />
+				</s:decorate>
+				
+			<s:decorate id="descDecoration" template="layout/edit.xhtml">
+					<ui:define name="label">Descuentos</ui:define>
+					<h:inputText id="lastname" required="true"
+						value="#{userHome.instance.descuentos}" />
+				</s:decorate>
+				
+				<s:decorate id="notifDecoration" template="layout/edit.xhtml">
+					<ui:define name="label">Notificaciones</ui:define>
+					<h:inputText id="lastname" required="true"
+						value="#{userHome.instance.notificaciones}" />
+						 
+				</s:decorate>
+
+				<div style="clear: both" />
+
+			</rich:panel>
+
+			<div class="actionButtons">
+				<h:commandButton id="save" value="Save" action="#{userHome.persist}"
+					rendered="#{!userHome.managed}" />
+				<h:commandButton id="update" value="Save"
+					action="#{userHome.update}" rendered="#{userHome.managed}" />
+				<h:commandButton id="delete" value="Delete"
+					action="#{userHome.remove}" immediate="true"
+					rendered="#{userHome.managed}" />
+				<s:button propagation="end" id="done" value="Done"
+					view="/userList.xhtml" />
+			</div>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
